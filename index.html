@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>《流浪地球》全景海报</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="leaflet.css" />
+  <script src="leaflet.js"></script>
+  <style>
+    html,
+    body,
+    #map {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .leaflet-container {
+      background: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    function init() {
+      var mapMinZoom = 0;
+      var mapMaxZoom = 7;
+      var map = L.map('map', {
+        maxZoom: mapMaxZoom,
+        minZoom: mapMinZoom,
+        crs: L.CRS.Simple
+      });
+
+      var mapBounds = new L.LatLngBounds(
+        map.unproject([0, 32556], mapMaxZoom),
+        map.unproject([32556, 0], mapMaxZoom));
+
+      map.fitBounds(mapBounds);
+      map.setView([-128, 128], 2);
+
+      var postAttr = '海报版权归 <a href="https://weibo.com/thewanderingearth">@电影流浪地球</a> 所有',
+      postUrl = '{z}/{x}/{y}.jpg';
+      var post = L.tileLayer(postUrl, { attribution: postAttr, bounds: mapBounds});
+
+      post.addTo(map);
+    }
+    init();
+  </script>
+</body>
+
+</html>

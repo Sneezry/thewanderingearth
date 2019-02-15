@@ -1,4 +1,4 @@
-# 《流浪地球》全景海报
+# 《流浪地球》行星发动机全景海报
 
 在线浏览地址：https://sneezry.com/thewanderingearth/
 
